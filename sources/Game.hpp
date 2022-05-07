@@ -26,12 +26,15 @@ namespace coup
       ~Game();
 
     // Methods
-        bool gameOnline();
-        unsigned int addPlayer(Player *player);
+        bool gameOnline(); // check if game is online
+        void playerDead(Player *player); // player is dead
+        unsigned int addPlayer(Player *player); // return player index
         vector<Player *> players();
         string turn();
-        string winner();
-        void revive(Player *player);
+        Player *getPlayerTurn(string name);
+        void changeTurn();
+        string winner(); 
+        void revive(Player *player); // revive a player
         //void addPlayer(string name);
       
     };
