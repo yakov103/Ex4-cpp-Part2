@@ -17,11 +17,17 @@ namespace coup{
 
  
         public : 
-
+        // Constructor
         Player(Game & game, string name_init); 
+        // Destructor
         ~Player();
-        unsigned int getIntex();
+        // Methods
+        unsigned int getIndex();
+        Game *getGame();
+        string getName();
+        bool isAlive();
         bool isEnoughPlayer();
+        bool isForeignAid();
         void income();
         void foreign_aid();
         void coup(Player &player);

@@ -77,7 +77,7 @@ namespace coup {
             return playerNames;
         }
 
-
+        // if game is online , return true
         bool Game::gameOnline(){
         if (gameOver){
                 return false; 
@@ -85,11 +85,11 @@ namespace coup {
         return gameStarted;
         }
 
-        // return the current player
+        // return the current player id 
         string Game::turn(){
                 return this->currentPlayer->name;
         }
-
+        // get who is the current player that his turn is
         Player *Game::getPlayerTurn(string name){
             for (unsigned int i = 0; i < playerList.size(); i++){
                 if (playerList[i]->getName() == name){
@@ -100,6 +100,9 @@ namespace coup {
             return nullptr;
         }
 
+
+
+        // change the turn
         void Game::changeTurn(){
             gameStarted = true;
             if (winner() != "No winner"){

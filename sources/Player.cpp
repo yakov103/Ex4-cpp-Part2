@@ -9,7 +9,7 @@ const short COUP_COST = 7;
 
 namespace coup { 
         Player::Player(Game & game, string name_init){
-        this->name = name_init; 
+        this->name = move(name_init);
         this->game = &game; 
         this->amountCoins = START_COINS;
         this->alive = true;
@@ -20,13 +20,29 @@ namespace coup {
 
         }
         void Player::income(){
-            this->amountCoins++;  
-
+            this->amountCoins++;  // add 1 coin to the player
         }
 
         void Player::addCoins(int coins){
-            this->amountCoins += coins; 
+            this->amountCoins += coins; // add coins to the player
         }
+        // return the current game 
+        Game* Player::getGame(){
+            return this->game;
+        }
+
+        string Player::getName(){
+            return this->name;
+        }
+        bool Player::isAlive(){
+            return this->alive;
+        }
+        bool Player::isForeignAid(){
+            return this->used_foreign_aid;
+        }
+        
+
+
 
         void Player::foreign_aid(){
             this->amountCoins+=2; 
