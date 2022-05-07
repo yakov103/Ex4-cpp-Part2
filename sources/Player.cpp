@@ -64,9 +64,23 @@ namespace coup {
 
         }
         void Player::coup(Player &player){
-            cout << "coup" << endl ; 
-
+            if (this->amountCoint < COUP_COST){
+                throw std::runtime_error("Player doesn't have enough coins to coup !");
+            }
+            if (!isPlayerTurn()){
+                throw std::runtime_error("It is not your turn !");
+            }
+            if (player.isAlive() == false){
+                throw std::runtime_error("Player is already dead !");
+            }
+            game->killPlayer(player);
+            used_foreign_aid = false;
+            this->addCoins(-COUP_COST);
+            game->changeTurn();
         }
+
+
+
         void Player::role(){
            return "still no role yet"; 
         }
@@ -81,9 +95,21 @@ namespace coup {
           return game->turn() == this->name;
         }
 
-        Player::~Player(){
-
+        void Player::transfer(Player &payer, Player &receiver) {
+            throw std::runtime_error("Not implemented yet");
         }
+
+void Player::tax() {
+     throw std::runtime_error("Not implemented yet");
+}
+
+void Player::steal(Player &a) {
+    throw std::runtime_error("Not implemented yet");
+}
+
+void Player::block(Player &a) {
+   throw std::runtime_error("Not implemented yet");
+}
 
 
 
