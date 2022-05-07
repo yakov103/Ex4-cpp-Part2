@@ -9,14 +9,15 @@ namespace coup{
     class Player { 
         private : 
         string name;
+       
+ 
+        public : 
         unsigned int amountCoins; 
         Game *game; 
         unsigned int index;
         bool alive;
         bool used_foreign_aid;
 
- 
-        public : 
         // Constructor
         Player(Game & game, string name_init); 
         // Destructor
@@ -26,7 +27,7 @@ namespace coup{
         Game *getGame();
         string getName();
         bool isAlive();
-        bool isEnoughPlayer();
+        bool isPlayerTurn();
         bool isForeignAid();
         void income();
         void foreign_aid();

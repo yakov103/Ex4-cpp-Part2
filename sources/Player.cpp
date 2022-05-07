@@ -19,10 +19,8 @@ namespace coup {
         //game.addPlayer(name_init); 
 
         }
-        void Player::income(){
-            this->amountCoins++;  // add 1 coin to the player
+        Player::~Player(){
         }
-
         void Player::addCoins(int coins){
             this->amountCoins += coins; // add coins to the player
         }
@@ -41,11 +39,28 @@ namespace coup {
             return this->used_foreign_aid;
         }
         
-
-
+        void Player::income(){
+          if (this->amountCoins == MAX_COINS){
+            throw std::runtime_error("Player already has max coins , he must coup !");
+          }
+          if (!isPlayerTurn()){
+          throw std::runtime_error("It is not your turn !");
+          }
+          this->amountCoins += 1;
+          used_foreign_aid = false;
+          game->changeTurn();
+        } 
 
         void Player::foreign_aid(){
-            this->amountCoins+=2; 
+           if (this->amountCoins == MAX_COINS){
+            throw std::runtime_error("Player already has max coins , he must coup !");
+          }
+          if (!isPlayerTurn()){
+          throw std::runtime_error("It is not your turn !");
+          }
+          this->amountCoins += 2;
+          used_foreign_aid = true;
+          game->changeTurn(); 
 
         }
         void Player::coup(Player &player){
@@ -53,17 +68,17 @@ namespace coup {
 
         }
         void Player::role(){
-            cout << "roles" << endl ; 
+           return "still no role yet"; 
         }
         int Player::coins(){
             return (int)this->amountCoins; 
         }
 
-        bool Player::isEnoughPlayer(){
+        bool Player::isPlayerTurn(){
           if (this->game->players().size() < 2 && !game->gameOnline()){
             throw std::runtime_error("Not enough players");
           }
-          return 
+          return game->turn() == this->name;
         }
 
         Player::~Player(){
