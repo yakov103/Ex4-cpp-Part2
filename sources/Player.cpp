@@ -75,16 +75,6 @@ void Player::addCoins(int amount){
     this->amountCoins += amount;
 }
 
-}
+}// namespace coup
 
 
-
-
-
-
-
-
-
-
-
-}
