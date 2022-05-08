@@ -5,7 +5,7 @@ using namespace std;
 
 namespace coup{
 
-enum LastAction{
+enum LastAction{ //**
     none,
     income,
     foreign_aid,
@@ -21,6 +21,7 @@ class Game ;
 class Player{
    public : 
     string name ; 
+    Game *game ;
     LastAction act ;
     int amountCoins; 
     bool isAlive; 
@@ -33,8 +34,9 @@ class Player{
     void coup(Player &player);//coup on player
     virtual string role();//returns the role of the player
     virtual void blocked();//blocked by another player
-    void startTurn(); //starts the turn
-    void endTurn(LastAction act);//end turn
+    void startTurn(); //starts the turn ** 
+    void endTurn(LastAction act);//end turn ** 
+    void addCoins(int amount);//adds coins to the player
 
     
 
