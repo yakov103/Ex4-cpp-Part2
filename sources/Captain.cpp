@@ -1,7 +1,8 @@
 #include "Captain.hpp"
+
 namespace coup {
 
-    Captain::Captain(Game *game, string name) : Player(game, name) {
+    Captain::Captain(Game &game, string name) : Player(game, name) {
         steal_amount = 0 ;
         steal_from = NULL ;
     }
@@ -10,12 +11,12 @@ namespace coup {
         // nothing to do
     }
 
-    void Captain::block(Player *player) {
-       if (player->act != LastAction::steal){
-`         throw runtime_error ("Captain can't block") ;
+    void Captain::block(Player &player) {
+       if (player.act != LastAction::steal){
+        throw runtime_error ("Captain can't block") ;
 
        }
-       player->blocked; 
+       player.blocked(); 
     }
 
     void Captain::blocked() {
@@ -38,19 +39,19 @@ namespace coup {
         return "Captain" ;
     }
 
-    void Captain::steal(Player *player) {
+    void Captain::steal(Player &player) {
         startTurn();
-        if (player->amountCoins <= 0 ){
+        if (player.amountCoins <= 0 ){
             throw runtime_error ("Player has no coins to steal") ;
         }
-        else if (player->amountCoins == 1){
+        else if (player.amountCoins == 1){
             this->addCoins(1);
-            player->addCoins(-1);
+            player.addCoins(-1);
             steal_amount = 1 ;
             steal_from = &player ;
         }else {
             this->addCoins(2);
-            player->addCoins(-2);
+            player.addCoins(-2);
             steal_amount = 2 ;
             steal_from = &player ;
 

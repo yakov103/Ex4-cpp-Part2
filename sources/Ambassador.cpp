@@ -2,7 +2,7 @@
 
 namespace coup {
 
-    Ambassador::Ambassador(Game *game, string name) : Player(game, name) {
+    Ambassador::Ambassador(Game &game, string name) : Player(game, name) {
         // nothing to do
     }
 
@@ -21,14 +21,14 @@ namespace coup {
         player.blocked(); 
     }
 
-    void Ambassador::transfer(Player *player1 , Player *player2) {
+    void Ambassador::transfer(Player &player1 , Player &player2) {
         startTurn();
-        if (player1->amountCoins <= 0 ){
+        if (player1.amountCoins <= 0 ){
             throw runtime_error ("Player has no coins to transfer") ;
         }
         else {
-            player2->addCoins(1);
-            player1->addCoins(-1);
+            player2.addCoins(1);
+            player1.addCoins(-1);
         }
         endTurn(LastAction::transfer);
 }

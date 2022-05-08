@@ -17,14 +17,14 @@ namespace  coup {
             throw invalid_argument("Player does not have enough money to coup");
         }
         if (amountCoins < 7 ){
-            p.isAlive = false;
-            target = &p;
+            player.isAlive = false;
+            target = &player;
             this->addCoins(-3);
             endTurn(LastAction::assassinate);
         }
         else {
-            p.isAlive = false;
-            target = &p;
+            player.isAlive = false;
+            target = &player;
             this->addCoins(-7);
             endTurn(LastAction::coup);
         }
@@ -48,7 +48,3 @@ namespace  coup {
 
 
 
-
-
-
-}

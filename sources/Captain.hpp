@@ -8,12 +8,12 @@ class Captain : public Player {
     int steal_amount ;
     Player *steal_from ;
 
-    Captain (Game *game, string name) ;
+    Captain (Game &game, string name) ;
     ~Captain () ;
-    void block (Player *player) ;
+    void block (Player &player) ;
     void blocked () ;
     string role()  ;
-    void steal (Player *player) ;
+    void steal (Player &player) ;
 
 };
 

@@ -3,6 +3,7 @@
 #include "Game.hpp"
 using namespace std; 
 
+
 namespace coup{
 
 enum LastAction{ //**

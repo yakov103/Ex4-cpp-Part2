@@ -67,8 +67,8 @@ void Player::startTurn(){
     }
     game->gameStarted = true;
 }
-void player::endTurn(LastAction act){
-    LastAction = act;
+void Player::endTurn(LastAction act){
+    this->act = act;
     game->nextTurn();
 }
 void Player::addCoins(int amount){

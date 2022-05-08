@@ -12,7 +12,7 @@ void Contessa::block(Player &player) {
     if (player.act != LastAction::assassinate) {
         throw invalid_argument("You cannot block the player because he didnt assisanted ");
     }
-    this->player.blocked();
+    player.blocked();
 }
 
 Contessa::~Contessa () {}

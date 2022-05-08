@@ -12,7 +12,7 @@ void Duke::block(Player &player) {
     if (player.act != LastAction::foreign_aid) {
         throw invalid_argument("You cannot block the player because he didnt forgien aid");
     }
-    this->player.blocked();
+    player.blocked();
 }
 
 void Duke::tax() {
