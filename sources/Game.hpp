@@ -15,13 +15,19 @@
 using namespace std;
 
 namespace coup{
+
+    constexpr int COUPPRICE = 7;
+    constexpr int MAXPLAYERS = 6;
+    constexpr int MAXMONEY = 10;
+
+    
     class Player;
     class Game{
         private:
       
 
         public:
-            vector<Player*> players;
+            vector<Player*> playersVec;
             unsigned int currentPlayer;
             bool gameStarted;
             bool gameEnded;
