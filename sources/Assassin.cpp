@@ -12,7 +12,7 @@ namespace  coup {
         return "Assassin";
     }
     void Assassin::coup(Player &player) {
-        startTurn();
+        beginTurn();
         if (!player.isAlive){
             throw invalid_argument("Player is already dead");
         }

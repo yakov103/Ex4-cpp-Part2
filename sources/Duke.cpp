@@ -21,7 +21,7 @@ void Duke::block(Player &player){
 }
 
 void Duke::tax() {
-   startTurn();
+   beginTurn();
     this->addCoins(3);
     endTurn(LastAction::tax);
 }

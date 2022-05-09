@@ -23,7 +23,7 @@ namespace coup {
     }
 
     void Ambassador::transfer(Player &player1 , Player &player2) {
-        startTurn();
+        beginTurn();
         if (player1.amountCoins <= 0 ){
             throw runtime_error ("Player has no coins to transfer") ;
         }

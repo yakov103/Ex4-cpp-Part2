@@ -18,7 +18,7 @@ void Player::income(){
     if (amountCoins >= MAXMONEY){
         throw invalid_argument("Player already has max amount of money, must coup");
     }
-    startTurn();
+    beginTurn();
     this->addCoins(1);
     endTurn(LastAction::income);
 }
@@ -31,12 +31,12 @@ void Player::foreign_aid(){ // foreign aid
         if (amountCoins >= MAXMONEY){
         throw invalid_argument("Player already has max amount of money, must coup");
     }
-    startTurn();
+    beginTurn();
     this->addCoins(2);
     endTurn(LastAction::foreign_aid);
 }
 void Player::coup(Player &player){ // coup (player)
-    startTurn();
+    beginTurn();
     if (amountCoins < COUPPRICE){
         throw invalid_argument("Player does not have enough money to coup");
     }
@@ -62,7 +62,7 @@ void Player::blocked(){ // blocked from something
 
 }
 
-void Player::startTurn(){ // starts the turn
+void Player::beginTurn(){ // starts the turn
     amountCoins = amountCoins +1; 
     amountCoins -= 1; 
     if (!isAlive){

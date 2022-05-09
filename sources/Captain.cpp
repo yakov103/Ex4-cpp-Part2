@@ -42,7 +42,7 @@ namespace coup {
     }
 
     void Captain::steal(Player &player) {
-        startTurn();
+        beginTurn();
         if (player.amountCoins <= 0 ){
             throw runtime_error ("Player has no coins to steal") ;
         }
