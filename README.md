@@ -1,3 +1,7 @@
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/66936716/167434498-ed8f26cf-7220-4654-948e-dd1fb4af9014.png">
+
+
+
 <div dir="rtl" lang="he">
 
 # קו - שלב ב
