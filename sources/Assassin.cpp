@@ -5,6 +5,9 @@ namespace  coup {
     Assassin::Assassin(Game &game, string name) : Player(game, name) {
         this->target = NULL; 
     }
+
+    Assassin::~Assassin() {
+    }
     string Assassin::role() {
         return "Assassin";
     }

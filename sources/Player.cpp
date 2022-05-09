@@ -1,4 +1,3 @@
-#include "Player.hpp"
 #include "Game.hpp"
 
 namespace coup{
@@ -12,6 +11,9 @@ Player::Player(Game &game, string name){
     game.addPlayer(this);
 }
 
+Player::~Player(){
+    game->playersVec.erase(std::remove(game->playersVec.begin(), game->playersVec.end(), this), game->playersVec.end());
+}
 void Player::income(){
     if (amountCoins >= MAXMONEY){
         throw invalid_argument("Player already has max amount of money, must coup");
@@ -20,6 +22,11 @@ void Player::income(){
     this->addCoins(1);
     endTurn(LastAction::income);
 }
+
+int Player::coins (){
+    return amountCoins;
+}
+
 void Player::foreign_aid(){
         if (amountCoins >= MAXMONEY){
         throw invalid_argument("Player already has max amount of money, must coup");
@@ -62,7 +69,7 @@ void Player::startTurn(){
     if (game->players().size() < 3 ){
         throw invalid_argument("Not enough players to start game");
     }
-    if (game->turn() == this->name){
+    if (game->turn() != this->name){
         throw invalid_argument("Player already has started turn");
     }
     game->gameStarted = true;

@@ -1,10 +1,10 @@
 
 
-#ifndef GAME_HPP
-#define GAME_HPP
+// #ifndef GAME_HPP
+// #define GAME_HPP
 
 
-
+#pragma once
 #include <iostream> 
 #include <vector>
 #include <string>
@@ -27,12 +27,15 @@ namespace coup{
       
 
         public:
-            vector<Player*> playersVec;
+        
             unsigned int currentPlayer;
             bool gameStarted;
             bool gameEnded;
+
             Game();//constructor
             ~Game();//destructor
+            vector<Player*> playersVec;
+
             vector<string> players();
             string turn(); 
             string winner(); 
@@ -45,7 +48,7 @@ namespace coup{
 }
 
 
-#endif // GAME_HPP
+//#endif // GAME_HPP
 
 
 

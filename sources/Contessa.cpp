@@ -4,6 +4,7 @@ namespace coup {
 Contessa::Contessa(Game &game, string name) : Player(game, name) {
 }
 
+
 string Contessa::role() {
     return "Contessa";
 }

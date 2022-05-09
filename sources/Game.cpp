@@ -6,6 +6,12 @@ namespace coup{
         currentPlayer = 0 ; 
     }
 
+    Game::~Game(){
+        for (auto player : playersVec){
+            delete player;
+        }
+    }
+
 vector <string> Game::players(){
     vector <string> playerNames;
     for(unsigned int i = 0; i < playersVec.size(); i++){

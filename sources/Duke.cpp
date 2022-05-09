@@ -4,9 +4,12 @@ namespace coup {
 Duke::Duke(Game &game, string name) : Player(game, name) {
 }
 
+
 string Duke::role() {
     return "Duke";
 }
+
+
 
 void Duke::block(Player &player) {
     if (player.act != LastAction::foreign_aid) {
