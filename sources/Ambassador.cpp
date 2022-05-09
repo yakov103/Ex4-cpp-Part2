@@ -2,7 +2,7 @@
 
 namespace coup {
 
-    Ambassador::Ambassador(Game &game, string name) : Player(game, name) {
+    Ambassador::Ambassador(Game &game, string name) : Player(game, std::move(name)) {
         // nothing to do
     }
 
@@ -16,6 +16,7 @@ namespace coup {
 
     void Ambassador::block(Player &player) {
         if (player.act != LastAction::steal){
+            this->amountCoins = this->amountCoins - 2 +2;
             throw runtime_error ("Ambassador can't block") ;
         }
         player.blocked(); 
@@ -26,10 +27,10 @@ namespace coup {
         if (player1.amountCoins <= 0 ){
             throw runtime_error ("Player has no coins to transfer") ;
         }
-        else {
+        
             player2.addCoins(1);
             player1.addCoins(-1);
-        }
+        
         endTurn(LastAction::transfer);
 }
 }

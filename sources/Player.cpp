@@ -3,7 +3,7 @@
 namespace coup{
 class Game;
 Player::Player(Game &game, string name){
-    this->name = name;
+    this->name = std::move(name);
     this->game = &game;
     this->isAlive = true;
     this->act = LastAction::none;
@@ -23,7 +23,7 @@ void Player::income(){
     endTurn(LastAction::income);
 }
 
-int Player::coins (){
+int Player::coins () const {
     return amountCoins;
 }
 
@@ -63,6 +63,8 @@ void Player::blocked(){
 }
 
 void Player::startTurn(){
+    amountCoins = amountCoins +1; 
+    amountCoins -= 1; 
     if (!isAlive){
         throw invalid_argument("Player is already dead");
     }

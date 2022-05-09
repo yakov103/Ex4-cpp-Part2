@@ -2,7 +2,7 @@
 
 namespace  coup { 
 
-    Assassin::Assassin(Game &game, string name) : Player(game, name) {
+    Assassin::Assassin(Game &game, string name) : Player(game, std::move(name)) {
         this->target = NULL; 
     }
 
@@ -19,7 +19,7 @@ namespace  coup {
         if (amountCoins <= 2 ){
             throw invalid_argument("Player does not have enough money to coup");
         }
-        if (amountCoins < 7 ){
+        if (amountCoins < COUPPRICE ){
             player.isAlive = false;
             target = &player;
             this->addCoins(-3);
@@ -28,7 +28,7 @@ namespace  coup {
         else {
             player.isAlive = false;
             target = &player;
-            this->addCoins(-7);
+            this->addCoins(-COUPPRICE);
             endTurn(LastAction::coup);
         }
     }

@@ -29,7 +29,7 @@ class Player{
 
     Player(Game &game, string name);//constructor
     ~Player();// destructor
-    int coins(); //returns the amount of coins the player has
+    int coins() const; //returns the amount of coins the player has
     void income();//income action
     void foreign_aid();//foreign aid
     void coup(Player &player);//coup on player

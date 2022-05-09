@@ -7,9 +7,6 @@ namespace coup{
     }
 
     Game::~Game(){
-        for (auto player : playersVec){
-            delete player;
-        }
     }
 
 vector <string> Game::players(){
@@ -23,7 +20,7 @@ vector <string> Game::players(){
 }
 
 string Game::turn(){
-    if (this->playersVec.size() == 0){
+    if (this->players().empty()){
         throw invalid_argument("No players in game");
     }
     return playersVec[currentPlayer]->name; //returns the name of the current player
@@ -54,7 +51,7 @@ void Game::addPlayer(Player* player){
 }
 
 void Game::nextTurn(){
-    if (this->playersVec.size() == 0){
+    if (this->players().empty()){
         throw invalid_argument("No players in game");
     }
     currentPlayer+=1;

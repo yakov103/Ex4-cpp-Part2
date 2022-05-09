@@ -2,7 +2,7 @@
 
 namespace coup {
 
-    Captain::Captain(Game &game, string name) : Player(game, name) {
+    Captain::Captain(Game &game, string name) : Player(game, std::move(name)) {
         steal_amount = 0 ;
         steal_from = NULL ;
     }
@@ -16,6 +16,8 @@ namespace coup {
         throw runtime_error ("Captain can't block") ;
 
        }
+        amountCoins = amountCoins+1 ;
+        amountCoins = amountCoins-1;  
        player.blocked(); 
     }
 
@@ -44,7 +46,7 @@ namespace coup {
         if (player.amountCoins <= 0 ){
             throw runtime_error ("Player has no coins to steal") ;
         }
-        else if (player.amountCoins == 1){
+        if (player.amountCoins == 1){
             this->addCoins(1);
             player.addCoins(-1);
             steal_amount = 1 ;

@@ -30,7 +30,7 @@ namespace coup{
         
             unsigned int currentPlayer;
             bool gameStarted;
-            bool gameEnded;
+        
 
             Game();//constructor
             ~Game();//destructor
