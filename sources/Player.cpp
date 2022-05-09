@@ -2,7 +2,7 @@
 
 namespace coup{
 class Game;
-Player::Player(Game &game, string name){
+Player::Player(Game &game, string name){ // constructor
     this->name = std::move(name);
     this->game = &game;
     this->isAlive = true;
@@ -11,7 +11,7 @@ Player::Player(Game &game, string name){
     game.addPlayer(this);
 }
 
-Player::~Player(){
+Player::~Player(){ // destructor
     game->playersVec.erase(std::remove(game->playersVec.begin(), game->playersVec.end(), this), game->playersVec.end());
 }
 void Player::income(){
@@ -23,11 +23,11 @@ void Player::income(){
     endTurn(LastAction::income);
 }
 
-int Player::coins () const {
+int Player::coins () const { // returns the amount of coins the player has
     return amountCoins;
 }
 
-void Player::foreign_aid(){
+void Player::foreign_aid(){ // foreign aid
         if (amountCoins >= MAXMONEY){
         throw invalid_argument("Player already has max amount of money, must coup");
     }
@@ -35,7 +35,7 @@ void Player::foreign_aid(){
     this->addCoins(2);
     endTurn(LastAction::foreign_aid);
 }
-void Player::coup(Player &player){
+void Player::coup(Player &player){ // coup (player)
     startTurn();
     if (amountCoins < COUPPRICE){
         throw invalid_argument("Player does not have enough money to coup");
@@ -48,10 +48,10 @@ void Player::coup(Player &player){
     endTurn(LastAction::coup);
 }
 
-string Player::role(){
+string Player::role(){ // returns the role of the player
     return "still just a Player ";
 }
-void Player::blocked(){
+void Player::blocked(){ // blocked from something
     if (act == LastAction::foreign_aid){ 
         this->amountCoins -= 2 ; 
         act = LastAction::none;
@@ -62,7 +62,7 @@ void Player::blocked(){
 
 }
 
-void Player::startTurn(){
+void Player::startTurn(){ // starts the turn
     amountCoins = amountCoins +1; 
     amountCoins -= 1; 
     if (!isAlive){
@@ -76,11 +76,11 @@ void Player::startTurn(){
     }
     game->gameStarted = true;
 }
-void Player::endTurn(LastAction act){
+void Player::endTurn(LastAction act){ // ends the turn
     this->act = act;
     game->nextTurn();
 }
-void Player::addCoins(int amount){
+void Player::addCoins(int amount){ // adds coins to the player (amount)
     this->amountCoins += amount;
 }
 

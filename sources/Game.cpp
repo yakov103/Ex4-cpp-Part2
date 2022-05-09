@@ -1,15 +1,15 @@
 #include "Game.hpp"
 namespace coup{
 
-    Game::Game(){
+    Game::Game(){ // constructor
         gameStarted = false;
         currentPlayer = 0 ; 
     }
 
-    Game::~Game(){
+    Game::~Game(){ // destructor
     }
 
-vector <string> Game::players(){
+vector <string> Game::players(){ // returns the names of the players
     vector <string> playerNames;
     for(unsigned int i = 0; i < playersVec.size(); i++){
         if( playersVec[i]->isAlive ){
@@ -19,14 +19,14 @@ vector <string> Game::players(){
     return playerNames; //returns a vector of player names
 }
 
-string Game::turn(){
+string Game::turn(){ // returns the name of the current player
     if (this->players().empty()){
         throw invalid_argument("No players in game");
     }
     return playersVec[currentPlayer]->name; //returns the name of the current player
     }
 
-string Game::winner(){
+string Game::winner(){ // returns the name of the winner
     if (!(this->gameStarted) || this->players().size() != 1){
         throw invalid_argument("No players in game");
     }
@@ -40,7 +40,7 @@ string Game::winner(){
     return playersVec[0]->name; //returns the name of the winner
 }
 
-void Game::addPlayer(Player* player){
+void Game::addPlayer(Player* player){ // adds a player to the game
     if (this->playersVec.size() >= MAXPLAYERS){
         throw invalid_argument("Too many players");
     }
