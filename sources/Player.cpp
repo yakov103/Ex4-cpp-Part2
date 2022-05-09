@@ -66,7 +66,7 @@ void Player::startTurn(){
     if (!isAlive){
         throw invalid_argument("Player is already dead");
     }
-    if (game->players().size() < 3 ){
+    if (game->players().size() < 3 && !game->gameStarted){
         throw invalid_argument("Not enough players to start game");
     }
     if (game->turn() != this->name){

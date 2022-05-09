@@ -15,7 +15,9 @@ namespace coup{
 vector <string> Game::players(){
     vector <string> playerNames;
     for(unsigned int i = 0; i < playersVec.size(); i++){
-        playerNames.push_back(playersVec[i]->name);
+        if( playersVec[i]->isAlive ){
+            playerNames.push_back(playersVec[i]->name);
+        }
     }
     return playerNames; //returns a vector of player names
 }
@@ -28,9 +30,16 @@ string Game::turn(){
     }
 
 string Game::winner(){
-    if (!(this->gameStarted) || this->playersVec.size() != 1){
+    if (!(this->gameStarted) || this->players().size() != 1){
         throw invalid_argument("No players in game");
     }
+    for (unsigned int i = 0; i < this->playersVec.size(); i++){
+        if (this->playersVec[i]->isAlive){
+            return this->playersVec[i]->name;
+        }
+    }
+
+
     return playersVec[0]->name; //returns the name of the winner
 }
 
